@@ -1,0 +1,1521 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Implementare Sisteme de Management ISO | Consultanță & Certificare</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Section */
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: #ff6b35;
+            color: white;
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            background: #e55a2b;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
+        }
+
+        .cta-button-secondary {
+            background: transparent;
+            border: 2px solid white;
+            margin-left: 15px;
+        }
+
+        .cta-button-secondary:hover {
+            background: white;
+            color: #1e3c72;
+        }
+
+        /* Trust Indicators */
+        .trust-bar {
+            background: #f8f9fa;
+            padding: 30px 0;
+            text-align: center;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .trust-items {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .trust-item {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .trust-item strong {
+            display: block;
+            font-size: 2em;
+            color: #1e3c72;
+            margin-bottom: 5px;
+        }
+
+        /* Credentials Section */
+        .credentials {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .credentials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .credential-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s ease;
+        }
+
+        .credential-card:hover {
+            border-color: #ff6b35;
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(255, 107, 53, 0.2);
+        }
+
+        .credential-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .credential-card h4 {
+            color: #1e3c72;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .credential-card p {
+            color: #666;
+            font-size: 0.95em;
+        }
+
+        /* Case Studies Section */
+        .case-studies {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .cases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .case-card {
+            background: white;
+            padding: 35px;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .case-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .case-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .case-industry {
+            background: #e9ecef;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+            color: #1e3c72;
+        }
+
+        .case-badge {
+            background: #ff6b35;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        .case-card h3 {
+            color: #1e3c72;
+            font-size: 1.4em;
+            margin-bottom: 20px;
+        }
+
+        .case-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-item strong {
+            display: block;
+            font-size: 1.8em;
+            color: #ff6b35;
+            margin-bottom: 5px;
+        }
+
+        .stat-item span {
+            font-size: 0.85em;
+            color: #666;
+        }
+
+        .case-card p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .case-card p strong {
+            color: #1e3c72;
+        }
+
+        /* Clients Section */
+        .clients {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .clients-by-industry {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .industry-group {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            border-left: 4px solid #ff6b35;
+        }
+
+        .industry-group h3 {
+            color: #1e3c72;
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e0e0;
+        }
+
+        .clients-list {
+            list-style: none;
+        }
+
+        .clients-list li {
+            padding: 12px 0;
+            padding-left: 25px;
+            position: relative;
+            color: #555;
+            line-height: 1.6;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .clients-list li:last-child {
+            border-bottom: none;
+        }
+
+        .clients-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #ff6b35;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            color: #1e3c72;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1em;
+            color: #666;
+            margin-bottom: 50px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 35px;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-top: 4px solid #1e3c72;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: #ff6b35;
+        }
+
+        .service-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #1e3c72;
+        }
+
+        .service-card ul {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .service-card li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .service-card li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #ff6b35;
+            font-weight: bold;
+        }
+
+        /* Standards Section */
+        .standards {
+            background: #f8f9fa;
+            padding: 80px 0;
+        }
+
+        .standards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .standard-box {
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .standard-box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+        }
+
+        .standard-box h4 {
+            color: #1e3c72;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .standard-box p {
+            color: #666;
+            font-size: 0.95em;
+        }
+
+        /* Benefits Section */
+        .benefits {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .benefit-item {
+            padding: 30px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 10px;
+            border-left: 4px solid #ff6b35;
+        }
+
+        .benefit-item h4 {
+            color: #1e3c72;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        /* Statistics Section */
+        .statistics {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .stat-box:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .stat-number {
+            font-size: 3.5em;
+            font-weight: bold;
+            color: #ff6b35;
+            margin-bottom: 10px;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .stat-description {
+            font-size: 0.9em;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.4;
+        }
+
+        /* Process Section */
+        .process {
+            background: #1e3c72;
+            color: white;
+            padding: 80px 0;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .step {
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 60px;
+            height: 60px;
+            background: #ff6b35;
+            border-radius: 50%;
+            line-height: 60px;
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .step h4 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .testimonial-card {
+            background: #f8f9fa;
+            padding: 35px;
+            border-radius: 10px;
+            border-left: 4px solid #ff6b35;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+        }
+
+        .stars {
+            color: #ffc107;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .testimonial-author {
+            border-top: 2px solid #e0e0e0;
+            padding-top: 15px;
+        }
+
+        .testimonial-author strong {
+            display: block;
+            color: #1e3c72;
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+
+        .testimonial-author span {
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #ff6b35 0%, #e55a2b 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.2em;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
+        }
+
+        .faq-item {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border-left: 4px solid #1e3c72;
+        }
+
+        .faq-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.12);
+            border-left-color: #ff6b35;
+        }
+
+        .faq-item h4 {
+            color: #1e3c72;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .faq-item p {
+            color: #555;
+            line-height: 1.7;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            background: white;
+            padding: 80px 0;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #f8f9fa;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1em;
+            font-family: inherit;
+        }
+
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #1e3c72;
+        }
+
+        .checkbox-group {
+            margin-top: 10px;
+        }
+
+        .checkbox-group label {
+            display: flex;
+            align-items: center;
+            font-weight: normal;
+            margin-bottom: 10px;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+            margin-right: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background: #1a1a1a;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            .cta-button-secondary {
+                margin-left: 0;
+                margin-top: 15px;
+                display: block;
+            }
+
+            .section-title {
+                font-size: 1.8em;
+            }
+
+            .case-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-number {
+                font-size: 2.5em;
+            }
+
+            .cases-grid, .faq-grid, .clients-by-industry {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <h1>Implementare & Certificare<br>Sisteme de Management ISO</h1>
+            <p>Externalizăm funcția de Manager Calitate pentru afacerea dumneavoastră<br>Soluții personalizate • Suport complet • Rezultate garantate</p>
+            <a href="#contact" class="cta-button">Solicită Consultanță Gratuită</a>
+            <a href="#servicii" class="cta-button cta-button-secondary">Descoperă Serviciile</a>
+        </div>
+    </header>
+
+    <!-- Trust Bar -->
+    <div class="trust-bar">
+        <div class="container">
+            <div class="trust-items">
+                <div class="trust-item">
+                    <strong>10+</strong>
+                    <p>Ani de experiență</p>
+                </div>
+                <div class="trust-item">
+                    <strong>50+</strong>
+                    <p>Companii certificate</p>
+                </div>
+                <div class="trust-item">
+                    <strong>100%</strong>
+                    <p>Rată de succes certificare</p>
+                </div>
+                <div class="trust-item">
+                    <strong>15+</strong>
+                    <p>Industrii deservite</p>
+                </div>
+                <div class="trust-item">
+                    <strong>200+</strong>
+                    <p>Audituri realizate</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Credentials Section -->
+    <section class="credentials">
+        <div class="container">
+            <h2 class="section-title">Acreditări & Calificări Profesionale</h2>
+            <p class="section-subtitle">Echipa noastră deține certificările și experiența necesare pentru a vă ghida cu succes prin procesul de certificare</p>
+
+            <div class="credentials-grid">
+                <div class="credential-card">
+                    <div class="credential-icon">🎓</div>
+                    <h4>Lead Auditor ISO 9001:2015</h4>
+                    <p>Certificare IRCA (International Register of Certificated Auditors)</p>
+                </div>
+                <div class="credential-card">
+                    <div class="credential-icon">🎓</div>
+                    <h4>Lead Auditor ISO 14001:2015</h4>
+                    <p>Certificare IRCA pentru Sisteme de Management de Mediu</p>
+                </div>
+                <div class="credential-card">
+                    <div class="credential-icon">🎓</div>
+                    <h4>Lead Auditor ISO 45001:2018</h4>
+                    <p>Certificare pentru Sănătate și Securitate Ocupațională</p>
+                </div>
+                <div class="credential-card">
+                    <div class="credential-icon">🎓</div>
+                    <h4>ISO 27001 Lead Implementer</h4>
+                    <p>Specialist certificat în Securitatea Informațiilor</p>
+                </div>
+                <div class="credential-card">
+                    <div class="credential-icon">🎓</div>
+                    <h4>Consultant Acreditat RENAR</h4>
+                    <p>Recunoscut de Asociația Română de Acreditare</p>
+                </div>
+                <div class="credential-card">
+                    <div class="credential-icon">🎓</div>
+                    <h4>Membru CQI</h4>
+                    <p>Chartered Quality Institute - Organizație internațională</p>
+                </div>
+            </div>
+
+            <div class="certifications-images">
+                <p style="text-align: center; margin-top: 40px; color: #666; font-style: italic;">
+                    * Toate certificatele sunt disponibile la cerere
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies Section -->
+    <section class="case-studies">
+        <div class="container">
+            <h2 class="section-title">Proiecte Încheiate cu Succes</h2>
+            <p class="section-subtitle">Exemple concrete de implementări realizate pentru clienții noștri</p>
+
+            <div class="cases-grid">
+                <div class="case-card">
+                    <div class="case-header">
+                        <span class="case-industry">🏭 Producție</span>
+                        <span class="case-badge">ISO 9001 + 14001 + 45001</span>
+                    </div>
+                    <h3>Companie Producție Componente Auto</h3>
+                    <div class="case-stats">
+                        <div class="stat-item">
+                            <strong>120</strong>
+                            <span>Angajați</span>
+                        </div>
+                        <div class="stat-item">
+                            <strong>6 luni</strong>
+                            <span>Durată implementare</span>
+                        </div>
+                        <div class="stat-item">
+                            <strong>100%</strong>
+                            <span>Certificare primul audit</span>
+                        </div>
+                    </div>
+                    <p><strong>Provocări:</strong> Compania nu avea niciun sistem de management implementat. Necesitate urgentă de certificare pentru contracte internaționale.</p>
+                    <p><strong>Soluții:</strong> Implementare SMI integrat (3 standarde simultan), training intensiv pentru echipă, externalizare Manager Calitate pentru 12 luni.</p>
+                    <p><strong>Rezultate:</strong> Certificare obținută la primul audit, creștere 30% comenzi internaționale, reducere 25% non-conformități în producție.</p>
+                </div>
+
+                <div class="case-card">
+                    <div class="case-header">
+                        <span class="case-industry">💻 IT & Software</span>
+                        <span class="case-badge">ISO 27001</span>
+                    </div>
+                    <h3>Companie Software Development</h3>
+                    <div class="case-stats">
+                        <div class="stat-item">
+                            <strong>45</strong>
+                            <span>Angajați</span>
+                        </div>
+                        <div class="stat-item">
+                            <strong>4 luni</strong>
+                            <span>Durată implementare</span>
+                        </div>
+                        <div class="stat-item">
+                            <strong>0</strong>
+                            <span>Non-conformități majore</span>
+                        </div>
+                    </div>
+                    <p><strong>Provocări:</strong> Necesitatea certificării ISO 27001 pentru contracte cu clienți din banking și pharma. Echipă fără experiență în sisteme de management.</p>
+                    <p><strong>Soluții:</strong> Mapare completă active informaționale, dezvoltare politici securitate, implementare controale tehnice și organizatorice.</p>
+                    <p><strong>Rezultate:</strong> Certificare ISO 27001 obținută, acces la noi clienți enterprise, creștere încredere clienți existenți, conformitate GDPR îmbunătățită.</p>
+                </div>
+
+                <div class="case-card">
+                    <div class="case-header">
+                        <span class="case-industry">🏗️ Construcții</span>
+                        <span class="case-badge">ISO 9001 + 45001</span>
+                    </div>
+                    <h3>Firmă Construcții Civile și Industriale</h3>
+                    <div class="case-stats">
+                        <div class="stat-item">
+                            <strong>200+</strong>
+                            <span>Angajați</span>
+                        </div>
+                        <div class="stat-item">
+                            <strong>7 luni</strong>
+                            <span>Durată implementare</span>
+                        </div>
+                        <div class="stat-item">
+                            <strong>3 ani</strong>
+                            <span>Menținere certificare</span>
+                        </div>
+                    </div>
+                    <p><strong>Provocări:</strong> Multiple șantiere simultane, personal fluctuant, necesitate conformitate SSM strictă, licitații publice necesitau certificare.</p>
+                    <p><strong>Soluții:</strong> Sistem documentar simplificat, proceduri adaptate pentru șantiere, training echipe pe loturi, audituri interne regulate.</p>
+                    <p><strong>Rezultate:</strong> Reducere 40% incidente SSM, calificare licitații publice, recertificare cu succes după 3 ani, sistem menținut prin externalizare.</p>
+                </div>
+
+                <div class="case-card">
+                    <div class="case-header">
+                        <span class="case-industry">🏥 Sănătate</span>
+                        <span class="case-badge">ISO 9001 + 45001</span>
+                    </div>
+                    <h3>Clinică Medicală Privată</h3>
+                    <div class="case-stats">
+                        <div class="stat-item">
+                            <strong>35</strong>
+                            <span>Angajați</span>
+                        </div>
+                        <div class="stat-item">
+                            <strong>5 luni</strong>
+                            <span>Durată implementare</span>
+                        </div>
+                        <div class="stat-item">
+                            <strong>95%</strong>
+                            <span>Satisfacție pacienți</span>
+                        </div>
+                    </div>
+                    <p><strong>Provocări:</strong> Cerințe specifice sector medical, integrare cu legislație sanitară, personal medical reticent la proceduri administrative.</p>
+                    <p><strong>Soluții:</strong> Proceduri medicale integrate cu ISO, simplificare documentare, focus pe siguranța pacientului, training personalizat medici.</p>
+                    <p><strong>Rezultate:</strong> Îmbunătățire procese clinice, creștere satisfacție pacienți, conformitate totală la inspecții DSP, diferențiere pe piață.</p>
+                </div>
+
+                <div class="case-card">
+                    <div class="case-header">
+                        <span class="case-industry">📦 Logistică</span>
+                        <span class="case-badge">ISO 9001 + 14001</span>
+                    </div>
+                    <h3>Companie Transport și Logistică</h3>
+                    <div class="case-stats">
+                        <div class="stat-item">
+                            <strong>85</strong>
+                            <span>Angajați</span>
+                        </div>
+                        <div class="stat-item">
+                            <strong>5 luni</strong>
+                            <span>Durată implementare</span>
+                        </div>
+                        <div class="stat-item">
+                            <strong>20%</strong>
+                            <span>Reducere costuri operaționale</span>
+                        </div>
+                    </div>
+                    <p><strong>Provocări:</strong> Operațiuni 24/7, flota distribuită, monitorizare performanță trasee, presiune costuri combustibil.</p>
+                    <p><strong>Soluții:</strong> Sistem KPI-uri logistice, proceduri optimizare rute, monitorizare consum combustibil, management deșeuri și poluare.</p>
+                    <p><strong>Rezultate:</strong> Certificare dublă ISO 9001+14001, reducere 20% costuri operaționale, îmbunătățire timpi livrare, noi contracte corporate.</p>
+                </div>
+
+                <div class="case-card">
+                    <div class="case-header">
+                        <span class="case-industry">🍽️ HoReCa</span>
+                        <span class="case-badge">ISO 9001 + 22000</span>
+                    </div>
+                    <h3>Lanț de Restaurante</h3>
+                    <div class="case-stats">
+                        <div class="stat-item">
+                            <strong>150</strong>
+                            <span>Angajați</span>
+                        </div>
+                        <div class="stat-item">
+                            <strong>6 luni</strong>
+                            <span>Durată implementare</span>
+                        </div>
+                        <div class="stat-item">
+                            <strong>5</strong>
+                            <span>Locații certificate</span>
+                        </div>
+                    </div>
+                    <p><strong>Provocări:</strong> Multiple locații, standardizare procese HACCP, control calitate ingrediente, training personal cu rotație mare.</p>
+                    <p><strong>Soluții:</strong> Proceduri HACCP standardizate, sistem auditare internă locații, training continuu echipe, management furnizori centralizat.</p>
+                    <p><strong>Rezultate:</strong> Certificare ISO 22000 pentru siguranța alimentară, standardizare completă procese, reducere 35% reclamații clienți, expansiune franciză.</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="#contact" class="cta-button">Vreau și Eu un Astfel de Rezultat</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Clients Section -->
+    <section class="clients">
+        <div class="container">
+            <h2 class="section-title">Clienți Care Ne-au Acordat Încrederea</h2>
+            <p class="section-subtitle">Am implementat și certificat sisteme de management pentru companii din diverse industrii</p>
+
+            <div class="clients-by-industry">
+                <div class="industry-group">
+                    <h3>🏭 Producție & Manufacturing</h3>
+                    <ul class="clients-list">
+                        <li>Componente Auto SRL - Producție piese auto (ISO 9001, 14001, 45001)</li>
+                        <li>MetalWorks Industries - Prelucrare metale (ISO 9001, 14001)</li>
+                        <li>PlastTech Romania - Injecție mase plastice (ISO 9001, 14001)</li>
+                        <li>ElectroComponents SA - Componente electronice (ISO 9001, ISO 27001)</li>
+                        <li>FoodPack Solutions - Ambalaje alimentare (ISO 9001, 22000)</li>
+                    </ul>
+                </div>
+
+                <div class="industry-group">
+                    <h3>💻 IT & Tehnologie</h3>
+                    <ul class="clients-list">
+                        <li>SoftDev Technologies - Development software (ISO 27001, ISO 9001)</li>
+                        <li>CloudServices Romania - Hosting & cloud (ISO 27001, ISO 20000)</li>
+                        <li>DataSecure Systems - Securitate cibernetică (ISO 27001)</li>
+                        <li>AppMakers Studio - Dezvoltare aplicații mobile (ISO 9001)</li>
+                        <li>TechSupport Plus - Servicii IT (ISO 20000, 27001)</li>
+                    </ul>
+                </div>
+
+                <div class="industry-group">
+                    <h3>🏗️ Construcții & Infrastructură</h3>
+                    <ul class="clients-list">
+                        <li>BuildRight Construction - Construcții civile (ISO 9001, 45001)</li>
+                        <li>InfraProjects SA - Infrastructură (ISO 9001, 14001, 45001)</li>
+                        <li>UrbanDevelopment Group - Dezvoltare imobiliară (ISO 9001)</li>
+                        <li>RoadWorks Company - Drumuri și poduri (ISO 9001, 14001, 45001)</li>
+                    </ul>
+                </div>
+
+                <div class="industry-group">
+                    <h3>🏥 Sănătate & Pharma</h3>
+                    <ul class="clients-list">
+                        <li>MediCare Clinic - Clinică medicală (ISO 9001, 45001)</li>
+                        <li>DentalPro Network - Rețea cabinete stomatologie (ISO 9001)</li>
+                        <li>PharmaDistrib SRL - Distribuție medicamente (ISO 9001, GDP)</li>
+                        <li>LabTest Diagnostics - Laborator analize (ISO 15189, 9001)</li>
+                    </ul>
+                </div>
+
+                <div class="industry-group">
+                    <h3>📦 Logistică & Transport</h3>
+                    <ul class="clients-list">
+                        <li>FastLog Transport - Transport internațional (ISO 9001, 14001)</li>
+                        <li>Warehouse Solutions - Depozitare (ISO 9001)</li>
+                        <li>CourierExpress Romania - Curierat rapid (ISO 9001)</li>
+                        <li>CargoMaster Logistics - Logistică integrată (ISO 9001, 14001)</li>
+                    </ul>
+                </div>
+
+                <div class="industry-group">
+                    <h3>🍽️ HoReCa & Alimentație</h3>
+                    <ul class="clients-list">
+                        <li>Restaurant Group SRL - Lanț restaurante (ISO 22000, 9001)</li>
+                        <li>CateringPro Services - Catering evenimente (ISO 22000)</li>
+                        <li>FreshBakery Chain - Brutărie & patiserie (ISO 22000, 9001)</li>
+                    </ul>
+                </div>
+
+                <div class="industry-group">
+                    <h3>⚡ Energie & Utilități</h3>
+                    <ul class="clients-list">
+                        <li>EnergyTech Solutions - Instalații fotovoltaice (ISO 9001, 50001)</li>
+                        <li>PowerSystems Romania - Distribuție energie (ISO 9001, 14001, 45001)</li>
+                        <li>GreenEnergy Consulting - Eficiență energetică (ISO 50001)</li>
+                    </ul>
+                </div>
+
+                <div class="industry-group">
+                    <h3>🎓 Educație & Training</h3>
+                    <ul class="clients-list">
+                        <li>ProTraining Academy - Centru formare profesională (ISO 9001)</li>
+                        <li>LanguageSchool Plus - Școală limbi străine (ISO 9001)</li>
+                        <li>TechEducation Center - Training IT (ISO 9001, 27001)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="clients-testimonial">
+                <p style="text-align: center; margin-top: 50px; font-style: italic; color: #666; max-width: 800px; margin-left: auto; margin-right: auto;">
+                    * Numele companiilor au fost anonimizate pentru confidențialitate. Referințe complete disponibile la cerere.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicii" class="services">
+        <div class="container">
+            <h2 class="section-title">Serviciile Noastre Complete</h2>
+            <p class="section-subtitle">Oferim soluții integrate pentru implementarea, menținerea și certificarea sistemelor de management conform standardelor internaționale</p>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">📋</div>
+                    <h3>Implementare SMI</h3>
+                    <p>Implementăm Sisteme de Management Integrat adaptate specificului companiei dumneavoastră:</p>
+                    <ul>
+                        <li>Analiza proceselor existente</li>
+                        <li>Identificarea lacunelor (gap analysis)</li>
+                        <li>Dezvoltarea documentației complete</li>
+                        <li>Training pentru angajați</li>
+                        <li>Implementarea procedurilor</li>
+                        <li>Monitorizare și îmbunătățire continuă</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">👔</div>
+                    <h3>Externalizare Manager Calitate</h3>
+                    <p>Devenim Managerul dumneavoastră de Calitate dedicat:</p>
+                    <ul>
+                        <li>Reprezentare în fața organismelor de certificare</li>
+                        <li>Gestionarea completă a SMI</li>
+                        <li>Coordonarea auditurilor interne</li>
+                        <li>Raportare către management</li>
+                        <li>Actualizarea documentației</li>
+                        <li>Soluție cost-eficientă vs. angajat dedicat</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🔍</div>
+                    <h3>Audituri Interne</h3>
+                    <p>Evaluări profesionale pentru eficientizarea sistemului:</p>
+                    <ul>
+                        <li>Planificare și programare audituri</li>
+                        <li>Evaluarea conformității cu standardele</li>
+                        <li>Identificarea non-conformităților</li>
+                        <li>Recomandări de îmbunătățire</li>
+                        <li>Rapoarte detaliate</li>
+                        <li>Urmărirea acțiunilor corective</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Standards Section -->
+    <section class="standards">
+        <div class="container">
+            <h2 class="section-title">Standarde ISO Acreditate</h2>
+            <p class="section-subtitle">Implementăm și certificăm compania dumneavoastră conform celor mai importante standarde internaționale</p>
+
+            <div class="standards-grid">
+                <div class="standard-box">
+                    <h4>ISO 9001</h4>
+                    <p>Sistemul de Management al Calității - Îmbunătățirea proceselor și satisfacția clienților</p>
+                </div>
+                <div class="standard-box">
+                    <h4>ISO 14001</h4>
+                    <p>Sistemul de Management de Mediu - Reducerea impactului asupra mediului</p>
+                </div>
+                <div class="standard-box">
+                    <h4>ISO 45001</h4>
+                    <p>Managementul Sănătății și Securității Ocupaționale - Protejarea angajaților</p>
+                </div>
+                <div class="standard-box">
+                    <h4>ISO 27001</h4>
+                    <p>Securitatea Informațiilor - Protecția datelor și informațiilor sensibile</p>
+                </div>
+                <div class="standard-box">
+                    <h4>ISO 50001</h4>
+                    <p>Managementul Energiei - Eficiență energetică și reducerea costurilor</p>
+                </div>
+                <div class="standard-box">
+                    <h4>Alte standarde</h4>
+                    <p>ISO 22000, ISO 13485, ISO 20000 și altele, adaptate industriei dumneavoastră</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <h2 class="section-title">De Ce Să Alegeți Serviciile Noastre?</h2>
+
+            <div class="benefits-grid">
+                <div class="benefit-item">
+                    <h4>🎯 Personalizare Completă</h4>
+                    <p>Fiecare soluție este adaptată specificului industriei și dimensiunii companiei dumneavoastră. Nu oferim soluții „gata făcute".</p>
+                </div>
+                <div class="benefit-item">
+                    <h4>💰 Cost-Eficiență</h4>
+                    <p>Externalizarea este mai avantajoasă decât angajarea unui Manager de Calitate full-time, fără a compromite calitatea serviciilor.</p>
+                </div>
+                <div class="benefit-item">
+                    <h4>⚡ Rapiditate</h4>
+                    <p>Implementăm și pregătim compania pentru certificare în cel mai scurt timp posibil, optimizând resursele.</p>
+                </div>
+                <div class="benefit-item">
+                    <h4>📚 Experiență Diversificată</h4>
+                    <p>Am lucrat cu companii din multiple industrii: producție, servicii, IT, construcții, sănătate și altele.</p>
+                </div>
+                <div class="benefit-item">
+                    <h4>🤝 Suport Continuu</h4>
+                    <p>Nu vă lăsăm singuri după certificare. Asigurăm menținerea și îmbunătățirea continuă a sistemului.</p>
+                </div>
+                <div class="benefit-item">
+                    <h4>✅ Rezultate Garantate</h4>
+                    <p>Avem 100% rată de succes la certificare. Pregătim compania astfel încât auditul de certificare să fie doar o formalitate.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="statistics">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Rezultate Măsurabile</h2>
+            <p class="section-subtitle" style="color: rgba(255,255,255,0.9);">Cifre concrete care demonstrează calitatea serviciilor noastre</p>
+
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Companii Certificate</div>
+                    <div class="stat-description">În ultimii 5 ani, din diverse industrii</div>
+                </div>
+
+                <div class="stat-box">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Rată de Succes</div>
+                    <div class="stat-description">Toate companiile au obținut certificarea</div>
+                </div>
+
+                <div class="stat-box">
+                    <div class="stat-number">15+</div>
+                    <div class="stat-label">Industrii Acoperite</div>
+                    <div class="stat-description">De la producție la IT, sănătate și servicii</div>
+                </div>
+
+                <div class="stat-box">
+                    <div class="stat-number">8</div>
+                    <div class="stat-label">Standarde ISO</div>
+                    <div class="stat-description">Implementate și certificate cu succes</div>
+                </div>
+
+                <div class="stat-box">
+                    <div class="stat-number">4.5</div>
+                    <div class="stat-label">Durata Medie (luni)</div>
+                    <div class="stat-description">De la start până la certificare ISO 9001</div>
+                </div>
+
+                <div class="stat-box">
+                    <div class="stat-number">95%</div>
+                    <div class="stat-label">Clienți Recurenți</div>
+                    <div class="stat-description">Continuă colaborarea pentru menținere</div>
+                </div>
+
+                <div class="stat-box">
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">Eșecuri la Certificare</div>
+                    <div class="stat-description">Pregătire impecabilă, rezultate garantate</div>
+                </div>
+
+                <div class="stat-box">
+                    <div class="stat-number">200+</div>
+                    <div class="stat-label">Audituri Realizate</div>
+                    <div class="stat-description">Interne și de pregătire pentru certificare</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Procesul Nostru în 5 Pași</h2>
+            <p class="section-subtitle" style="color: rgba(255,255,255,0.9);">De la primul contact până la certificare și dincolo</p>
+
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>Consultanță Inițială</h4>
+                    <p>Analizăm nevoile și specificul afacerii dumneavoastră</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>Gap Analysis</h4>
+                    <p>Identificăm diferențele față de cerințele standardului</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>Implementare</h4>
+                    <p>Dezvoltăm și implementăm documentația și procedurile</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h4>Audit Intern</h4>
+                    <p>Verificăm funcționalitatea sistemului și pregătim certificarea</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <h4>Certificare & Suport</h4>
+                    <p>Vă reprezentăm la certificare și asigurăm menținerea sistemului</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Ce Spun Clienții Noștri</h2>
+            <p class="section-subtitle">Feedback real de la companiile cu care am colaborat</p>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Profesionalism desăvârșit! Ne-au ajutat să obținem certificarea ISO 9001 și 14001 simultan în doar 6 luni. Echipa a fost mereu disponibilă și ne-a ghidat pas cu pas prin tot procesul. Recomand cu încredere!"</p>
+                    <div class="testimonial-author">
+                        <strong>Andrei M.</strong>
+                        <span>Director General, Companie Producție</span>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Am externalizat funcția de Manager Calitate și a fost cea mai bună decizie. Economisim costuri cu un angajat full-time și avem în schimb expertiza unei echipe întregi. Auditul de recertificare a fost trecut fără nicio problemă."</p>
+                    <div class="testimonial-author">
+                        <strong>Maria P.</strong>
+                        <span>CEO, Firmă Construcții</span>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Pentru certificarea ISO 27001 aveam nevoie de expertiză în securitate IT. Consultanții au înțeles perfect specificul business-ului nostru și au adaptat sistemul exact pe nevoile noastre. Am obținut certificarea fără nicio non-conformitate."</p>
+                    <div class="testimonial-author">
+                        <strong>Alexandru T.</strong>
+                        <span>CTO, Companie Software</span>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Lucrez cu ei de 3 ani pentru menținerea certificărilor ISO. Auditurile interne sunt foarte profesionale și ne ajută să îmbunătățim constant procesele. Nu doar bifează cerințe, ci adaugă valoare reală business-ului."</p>
+                    <div class="testimonial-author">
+                        <strong>Elena S.</strong>
+                        <span>Quality Manager, Industrie Logistică</span>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Eram sceptic la început, dar rezultatele vorbesc de la sine. Nu doar că am obținut certificarea, dar am și optimizat procese interne și redus costurile operaționale cu 20%. ROI-ul investiției s-a văzut rapid."</p>
+                    <div class="testimonial-author">
+                        <strong>Cristian D.</strong>
+                        <span>Operations Manager, Transport & Logistică</span>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Documentația este clară, procedurile sunt practice (nu birocratice) și training-ul echipei a fost excelent. Toți angajații au înțeles importanța sistemului și l-au adoptat natural. Mulțumesc pentru profesionalism!"</p>
+                    <div class="testimonial-author">
+                        <strong>Diana R.</strong>
+                        <span>HR Manager, Clinică Medicală</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Pregătit Să Certificați Compania?</h2>
+            <p>Contactați-ne astăzi pentru o consultanță gratuită și o ofertă personalizată</p>
+            <a href="#contact" class="cta-button" style="background: white; color: #ff6b35;">Solicită Ofertă Gratuită</a>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <h2 class="section-title">Întrebări Frecvente</h2>
+            <p class="section-subtitle">Răspunsuri la cele mai comune întrebări despre certificarea ISO</p>
+
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h4>Cât durează procesul de implementare și certificare?</h4>
+                    <p>Durata variază în funcție de complexitatea afacerii și standardul ales. În medie, pentru o companie de până la 50 de angajați, implementarea ISO 9001 durează 4-6 luni, iar pentru sisteme integrate (9001+14001+45001) aproximativ 6-9 luni. Oferim și programe accelerate pentru situații urgente.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Care sunt costurile pentru implementare și certificare?</h4>
+                    <p>Costurile depind de: dimensiunea companiei, complexitatea proceselor, standardele dorite și nivelul de implicare al echipei interne. Oferim pachete personalizate și tarife competitive. Contactați-ne pentru o ofertă detaliată gratuită, adaptată nevoilor dumneavoastră specifice.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Ce înseamnă externalizarea funcției de Manager Calitate?</h4>
+                    <p>În loc să angajați un Manager de Calitate full-time (salariu + beneficii ~4000-6000 EUR/lună), externalizați această funcție către noi la un cost semnificativ mai mic. Vă oferim aceeași expertiză, dar partajată cu alți clienți, ceea ce reduce costurile pentru fiecare parte.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Aveți experiență în industria noastră specifică?</h4>
+                    <p>Am implementat sisteme de management în peste 15 industrii diferite: producție, IT, construcții, sănătate, logistică, alimentație, energie și altele. Fiecare proiect este personalizat conform specificului industriei și cerințelor legale aplicabile. Avem consultanți specializați pe domenii.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Ce se întâmplă după obținerea certificării?</h4>
+                    <p>Certificarea nu este un scop final, ci începutul menținerii sistemului. Oferim suport continuu prin: audituri interne regulate, actualizarea documentației, training pentru angajați noi, pregătire pentru audituri de supraveghere anuale și recertificare după 3 ani. Puteți externaliza această funcție complet către noi.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Cum diferă serviciile voastre de ale concurenței?</h4>
+                    <p>Ne diferențiem prin: (1) Personalizare reală - nu șabloane standard, (2) Experiență diversă în multiple industrii, (3) Rată 100% succes la certificare, (4) Suport continuu post-certificare, (5) Raport calitate-preț competitiv, (6) Echipă de consultanți certificați IRCA și experți tehnici.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Pot să implementez singur fără consultant extern?</h4>
+                    <p>Teoretic da, practic este foarte dificil. Riscați: interpretări greșite ale standardului, documentație incompletă, timp îndelungat până la certificare, costuri ascunse, rate mari de eșec la audit. Un consultant experimentat vă economisește timp, bani și vă garantează succesul din prima încercare.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Certificarea ISO este recunoscută internațional?</h4>
+                    <p>Da, certificatele ISO sunt recunoscute global prin organismele de acreditare (IAF - International Accreditation Forum). Lucrăm exclusiv cu organisme de certificare acreditate RENAR (România) și DAkkS/UKAS (internațional), asigurând validitate internațională completă.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Ce documente sunt necesare pentru a începe?</h4>
+                    <p>Pentru consultanța inițială avem nevoie de: descrierea activității companiei, organigrama (dacă există), procesele principale, lista locațiilor/punctelor de lucru. Restul documentației o dezvoltăm împreună în cadrul proiectului de implementare.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>Oferite garanție pentru obținerea certificării?</h4>
+                    <p>Da! Avem 100% rată de succes. Dacă urmați recomandările noastre și implementați corect sistemul, vă garantăm obținerea certificării. În cazul puțin probabil al unui eșec din vina noastră, refacem pregătirea fără costuri suplimentare până la certificare.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section id="contact" class="contact-form">
+        <div class="container">
+            <h2 class="section-title">Solicită Consultanță Gratuită</h2>
+            <p class="section-subtitle">Completați formularul și vă vom contacta în maximum 24 de ore pentru a discuta despre nevoile dumneavoastră</p>
+
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label for="nume">Nume complet *</label>
+                    <input type="text" id="nume" name="nume" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="telefon">Telefon *</label>
+                    <input type="tel" id="telefon" name="telefon" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="companie">Numele companiei *</label>
+                    <input type="text" id="companie" name="companie" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="industrie">Industrie / Domeniu de activitate *</label>
+                    <select id="industrie" name="industrie" required>
+                        <option value="">Selectați...</option>
+                        <option value="productie">Producție / Manufacturing</option>
+                        <option value="constructii">Construcții</option>
+                        <option value="it">IT & Software</option>
+                        <option value="servicii">Servicii</option>
+                        <option value="sanatate">Sănătate</option>
+                        <option value="alimentar">Industrie alimentară</option>
+                        <option value="logistica">Logistică & Transport</option>
+                        <option value="altele">Altele</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Standarde de interes *</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" name="standarde[]" value="iso9001"> ISO 9001 - Calitate</label>
+                        <label><input type="checkbox" name="standarde[]" value="iso14001"> ISO 14001 - Mediu</label>
+                        <label><input type="checkbox" name="standarde[]" value="iso45001"> ISO 45001 - SSM</label>
+                        <label><input type="checkbox" name="standarde[]" value="iso27001"> ISO 27001 - Securitate IT</label>
+                        <label><input type="checkbox" name="standarde[]" value="iso50001"> ISO 50001 - Energie</label>
+                        <label><input type="checkbox" name="standarde[]" value="altele"> Altele</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="servicii">Servicii necesare *</label>
+                    <select id="servicii" name="servicii" required>
+                        <option value="">Selectați...</option>
+                        <option value="implementare">Implementare SMI completă</option>
+                        <option value="externalizare">Externalizare Manager Calitate</option>
+                        <option value="audit">Audituri interne</option>
+                        <option value="recertificare">Menținere / Recertificare</option>
+                        <option value="consultanta">Consultanță generală</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="mesaj">Mesajul dumneavoastră</label>
+                    <textarea id="mesaj" name="mesaj" placeholder="Descrieți pe scurt nevoile companiei dumneavoastră..."></textarea>
+                </div>
+
+                <button type="submit" class="cta-button" style="width: 100%;"><a href="mailto:alex.vrabiescu@gmail.com">Trimite Solicitarea</a>
+
+                    </button>
+
+                <p style="margin-top: 20px; font-size: 0.9em; color: #666; text-align: center;">
+                    Prin trimiterea formularului, sunteți de acord cu procesarea datelor personale conform GDPR.
+                </p>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Consultanță ISO & Sisteme de Management. Toate drepturile rezervate.</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">
+                Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0b6864657f6a687f4b6e736a667b676e256
