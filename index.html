@@ -208,6 +208,91 @@ color:  #4477CE; /*  #4B70F5;  */
   Setări cookie
 </button>
 
+
+<!-- Cookie java -->
+    <script>
+document.addEventListener("DOMContentLoaded", function() {
+
+  const overlay = document.getElementById("cookie-overlay");
+  const modal = document.getElementById("cookie-modal");
+  const saveBtn = document.getElementById("save-cookies");
+  const acceptAllBtn = document.getElementById("accept-all");
+  const analyticsCheckbox = document.getElementById("analytics-cookies");
+  const openSettingsBtn = document.getElementById("open-cookie-settings");
+
+  function showModal() {
+    overlay.style.display = "block";
+    modal.style.display = "block";
+  }
+
+  function hideModal() {
+    overlay.style.display = "none";
+    modal.style.display = "none";
+  }
+
+  function loadGoogleAnalytics() {
+    if (!window.gaLoaded) {
+      const script = document.createElement("script");
+      script.src = "https://www.googletagmanager.com/gtag/js?id=G-09ZGWJ0CQ6";
+      script.async = true;
+      document.head.appendChild(script);
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', 'G-09ZGWJ0CQ6');
+
+      window.gaLoaded = true;
+    }
+  }
+
+  const consent = localStorage.getItem("cookieConsent");
+
+  if (!consent) {
+    showModal();
+  } else {
+    const parsed = JSON.parse(consent);
+    if (parsed.analytics) {
+      loadGoogleAnalytics();
+    }
+  }
+
+  saveBtn.addEventListener("click", function() {
+    const preferences = {
+      necessary: true,
+      analytics: analyticsCheckbox.checked
+    };
+
+    localStorage.setItem("cookieConsent", JSON.stringify(preferences));
+
+    if (preferences.analytics) {
+      loadGoogleAnalytics();
+    }
+
+    hideModal();
+  });
+
+  acceptAllBtn.addEventListener("click", function() {
+    const preferences = {
+      necessary: true,
+      analytics: true
+    };
+
+    localStorage.setItem("cookieConsent", JSON.stringify(preferences));
+    analyticsCheckbox.checked = true;
+
+    loadGoogleAnalytics();
+    hideModal();
+  });
+
+  openSettingsBtn.addEventListener("click", function() {
+    showModal();
+  });
+
+});
+</script>
+	
 	
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-09ZGWJ0CQ6"></script>
