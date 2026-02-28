@@ -171,6 +171,44 @@ color:  #4477CE; /*  #4B70F5;  */
 </style>
 </head>
 
+
+<!-- Overlay -->
+<div id="cookie-overlay" class="cookie-overlay"></div>
+
+<!-- Modal -->
+<div id="cookie-modal" class="cookie-modal">
+  <h3>Preferințe Cookie</h3>
+  <p>
+    Folosim cookie-uri pentru funcționarea site-ului și pentru analiză trafic.
+    Poți alege ce tipuri accepți.
+  </p>
+
+  <div class="cookie-option">
+    <label>
+      <input type="checkbox" checked disabled>
+      Cookie-uri necesare (obligatorii)
+    </label>
+  </div>
+
+  <div class="cookie-option">
+    <label>
+      <input type="checkbox" id="analytics-cookies">
+      Cookie-uri de analiză (Google Analytics)
+    </label>
+  </div>
+
+  <div class="cookie-buttons">
+    <button id="save-cookies">Salvează preferințele</button>
+    <button id="accept-all">Acceptă tot</button>
+  </div>
+</div>
+
+<!-- Buton redeschidere -->
+<button id="open-cookie-settings" class="cookie-settings-btn">
+  Setări cookie
+</button>
+
+	
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-09ZGWJ0CQ6"></script>
 <script>
