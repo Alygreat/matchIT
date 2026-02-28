@@ -21,6 +21,75 @@
             color: #333;
         }
 
+.cookie-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(4px);
+  display: none;
+  z-index: 9998;
+}
+
+.cookie-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 30px;
+  max-width: 500px;
+  width: 90%;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  display: none;
+  z-index: 9999;
+}
+
+.cookie-modal h3 {
+  margin-top: 0;
+}
+
+.cookie-option {
+  margin: 15px 0;
+}
+
+.cookie-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.cookie-buttons button {
+  padding: 10px 18px;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+#save-cookies {
+  background: #333;
+  color: white;
+}
+
+#accept-all {
+  background: #4CAF50;
+  color: white;
+}
+
+.cookie-settings-btn {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  padding: 8px 14px;
+  font-size: 12px;
+  background: #111;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+        
 .match {
 color:  #4477CE; /*  #4B70F5;  */
   }
@@ -850,6 +919,128 @@ color:  #4477CE; /*  #4B70F5;  */
     </style>
 </head>
 
+<!-- Overlay -->
+<div id="cookie-overlay" class="cookie-overlay"></div>
+
+<!-- Modal -->
+<div id="cookie-modal" class="cookie-modal">
+  <h3>Preferințe Cookie</h3>
+  <p>
+    Folosim cookie-uri pentru funcționarea site-ului și pentru analiză trafic.
+    Poți alege ce tipuri accepți.
+  </p>
+
+  <div class="cookie-option">
+    <label>
+      <input type="checkbox" checked disabled>
+      Cookie-uri necesare (obligatorii)
+    </label>
+  </div>
+
+  <div class="cookie-option">
+    <label>
+      <input type="checkbox" id="analytics-cookies">
+      Cookie-uri de analiză (Google Analytics)
+    </label>
+  </div>
+
+  <div class="cookie-buttons">
+    <button id="save-cookies">Salvează preferințele</button>
+    <button id="accept-all">Acceptă tot</button>
+  </div>
+</div>
+
+<!-- Buton redeschidere -->
+<button id="open-cookie-settings" class="cookie-settings-btn">
+  Setări cookie
+</button>
+
+
+<!-- Cookie java -->
+    <script>
+document.addEventListener("DOMContentLoaded", function() {
+
+  const overlay = document.getElementById("cookie-overlay");
+  const modal = document.getElementById("cookie-modal");
+  const saveBtn = document.getElementById("save-cookies");
+  const acceptAllBtn = document.getElementById("accept-all");
+  const analyticsCheckbox = document.getElementById("analytics-cookies");
+  const openSettingsBtn = document.getElementById("open-cookie-settings");
+
+  function showModal() {
+    overlay.style.display = "block";
+    modal.style.display = "block";
+  }
+
+  function hideModal() {
+    overlay.style.display = "none";
+    modal.style.display = "none";
+  }
+
+  function loadGoogleAnalytics() {
+    if (!window.gaLoaded) {
+      const script = document.createElement("script");
+      script.src = "https://www.googletagmanager.com/gtag/js?id=G-09ZGWJ0CQ6";
+      script.async = true;
+      document.head.appendChild(script);
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', 'G-09ZGWJ0CQ6');
+
+      window.gaLoaded = true;
+    }
+  }
+
+  const consent = localStorage.getItem("cookieConsent");
+
+  if (!consent) {
+    showModal();
+  } else {
+    const parsed = JSON.parse(consent);
+    if (parsed.analytics) {
+      loadGoogleAnalytics();
+    }
+  }
+
+  saveBtn.addEventListener("click", function() {
+    const preferences = {
+      necessary: true,
+      analytics: analyticsCheckbox.checked
+    };
+
+    localStorage.setItem("cookieConsent", JSON.stringify(preferences));
+
+    if (preferences.analytics) {
+      loadGoogleAnalytics();
+    }
+
+    hideModal();
+  });
+
+  acceptAllBtn.addEventListener("click", function() {
+    const preferences = {
+      necessary: true,
+      analytics: true
+    };
+
+    localStorage.setItem("cookieConsent", JSON.stringify(preferences));
+    analyticsCheckbox.checked = true;
+
+    loadGoogleAnalytics();
+    hideModal();
+  });
+
+  openSettingsBtn.addEventListener("click", function() {
+    showModal();
+  });
+
+});
+</script>
+    
+    
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-09ZGWJ0CQ6"></script>
 <script>
